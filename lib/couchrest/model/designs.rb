@@ -118,6 +118,11 @@ module CouchRest
           model.model_type_key
         end
 
+        # Convenience wrapper to access model's type value option.
+        def model_type_value
+          model.model_type_value
+        end
+
         protected
 
         # Create accessor in model and assign a new design doc.
