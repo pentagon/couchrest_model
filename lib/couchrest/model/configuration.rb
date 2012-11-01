@@ -10,6 +10,7 @@ module CouchRest
       included do
         add_config :model_type_key
         add_config :model_type_value
+        add_config :model_type_prefix
         add_config :mass_assign_any_attribute
         add_config :auto_update_design_doc
         add_config :environment
@@ -20,6 +21,7 @@ module CouchRest
         configure do |config|
           config.model_type_key = 'type' # was 'couchrest-type'
           config.model_type_value = name
+          config.model_type_prefix = ''
           config.mass_assign_any_attribute = false
           config.auto_update_design_doc = true
           config.time_fraction_digits = 3
