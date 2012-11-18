@@ -33,24 +33,6 @@ module CouchRest
       def couchrest_parent_will_change!
         casted_by.couchrest_attribute_will_change!(casted_by_property.name) if casted_by_property
       end
-
-      # Iterate through all nested attributes to make sure any changes happen
-      def changed?
-        if self.respond_to? :attributes
-          self.attributes.keys.each do |a|
-            attr = self.send a.to_sym
-            res = if attr.respond_to? :changed?
-              attr.send :changed?
-            else
-              self.send "#{a}_changed?"
-            end
-            return true if res
-          end
-          false
-        else
-          super
-        end
-      end
     end
   end
 end
