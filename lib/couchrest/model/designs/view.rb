@@ -381,7 +381,7 @@ module CouchRest
         end
 
         def last_page?
-          total_pages >= current_page
+          current_page >= total_pages
         end
 
         protected
