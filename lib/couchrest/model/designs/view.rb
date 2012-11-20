@@ -380,6 +380,10 @@ module CouchRest
           (offset_value / limit_value) + 1
         end
 
+        def last_page?
+          total_pages >= current_page
+        end
+
         protected
 
         def include_docs!
