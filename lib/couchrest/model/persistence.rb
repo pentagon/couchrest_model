@@ -119,7 +119,7 @@ module CouchRest
         #  a document instance
         #
         def build_from_database(doc = {}, options = {}, &block)
-          src = doc[model_type_key]
+          src = model_class_name || doc[model_type_key]
           base = (src.blank? || src == self.to_s) ? self :
             [model_type_prefix.classify, src.classify].join('::').constantize
           base.new(doc, options.merge(:directly_set_attributes => true), &block)

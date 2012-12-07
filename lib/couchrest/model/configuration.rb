@@ -17,11 +17,13 @@ module CouchRest
         add_config :connection
         add_config :connection_config_file
         add_config :time_fraction_digits
+        add_config :model_class_name
 
         configure do |config|
           config.model_type_key = 'type' # was 'couchrest-type'
           config.model_type_value = name
           config.model_type_prefix = ''
+          config.model_class_name = nil
           config.mass_assign_any_attribute = false
           config.auto_update_design_doc = true
           config.time_fraction_digits = 3
