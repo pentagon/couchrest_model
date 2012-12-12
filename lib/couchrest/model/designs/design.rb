@@ -18,7 +18,7 @@ module CouchRest
           self.model       = model
           self.method_name = self.class.method_name(prefix)
           suffix = prefix ? "_#{prefix}" : ''
-          self["_id"] = "_design/#{model.to_s}#{suffix}"
+          self["_id"] = "_design/#{model.model_design_doc_name || model.to_s}#{suffix}"
           apply_defaults
         end
 
