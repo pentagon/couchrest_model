@@ -41,7 +41,11 @@ module CouchRest
           conf = connection_configuration
           userinfo = [conf[:username], conf[:password]].compact.join(':')
           userinfo += '@' unless userinfo.empty?
-          "#{conf[:protocol]}://#{userinfo}#{conf[:host]}:#{conf[:port]}"
+          if conf[:port].present?
+            "#{conf[:protocol]}://#{userinfo}#{conf[:host]}:#{conf[:port]}"
+          else
+            "#{conf[:protocol]}://#{userinfo}#{conf[:host]}"
+          end
         end
 
         def connection_configuration
